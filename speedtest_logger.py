@@ -7,7 +7,7 @@ import click
 import daiquiri
 import speedtest
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 
 @click.command()
@@ -20,7 +20,7 @@ def main(directory):
                 filename="speedtest.log",
                 directory=directory,
                 level=logging.INFO,
-                interval=datetime.timedelta(days=1),
+                interval=datetime.timedelta(weeks=1),
                 formatter=daiquiri.formatter.ColorFormatter(fmt="%(message)s"),
             )
         ],
