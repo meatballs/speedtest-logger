@@ -7,7 +7,7 @@ import click
 import daiquiri
 import speedtest
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 
 @click.command()
@@ -28,10 +28,14 @@ def main(directory):
     logger = daiquiri.getLogger(__name__)
     servers = []
 
-    s = speedtest.Speedtest()
-    s.get_servers(servers)
-    s.get_best_server()
-    s.download()
-    s.upload(pre_allocate=False)
+    try:
+        s = speedtest.Speedtest()
+        s.get_servers(servers)
+        s.get_best_server()
+        s.download()
+        s.upload(pre_allocate=False)
+        message = s.results.csv()
+    except speedtest.ConfigRetrievalError:
+        message = f",,,{datetime.datetime.utcnow().isoformat()}Z,0,00,,"
 
-    logger.info(s.results.csv())
+    logger.info(message)
