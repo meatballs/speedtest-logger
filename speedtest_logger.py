@@ -7,7 +7,7 @@ import click
 import daiquiri
 import speedtest
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 
 @click.command()
@@ -35,7 +35,3 @@ def main(directory):
     s.upload(pre_allocate=False)
 
     logger.info(s.results.csv())
-
-
-if __name__ == "__main__":
-    main()
