@@ -32,7 +32,7 @@ def main(directory):
     s.get_servers(servers)
     s.get_best_server()
     s.download()
-    s.upload()
+    s.upload(pre_allocate=False)
 
     logger.info(s.results.csv())
 
