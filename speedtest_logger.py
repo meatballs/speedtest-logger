@@ -7,7 +7,7 @@ import click
 import daiquiri
 import speedtest
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 
 @click.command()

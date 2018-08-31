@@ -8,6 +8,10 @@ author = "Owen Campbell"
 author-email = "owen.campbell@tanti.org.uk"
 home-page = "http://owencampbell.me.uk"
 classifiers = ["License :: OSI Approved :: MIT License"]
-
+requires = [
+    "click",
+    "daiquiri",
+    "speedtest-cli"
+]
 [tool.flit.scripts]
 speedtest-logger = "speedtest_logger:main"
