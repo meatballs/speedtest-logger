@@ -1,0 +1,13 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "speedtest_logger"
+author = "Owen Campbell"
+author-email = "owen.campbell@tanti.org.uk"
+home-page = "http://owencampbell.me.uk"
+classifiers = ["License :: OSI Approved :: MIT License"]
+
+[tool.flit.scripts]
+speedtest-logger = "speedtest_logger:main"
