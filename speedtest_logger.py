@@ -7,7 +7,7 @@ import click
 import daiquiri
 from speedtest import ConfigRetrievalError, Speedtest, SpeedtestConfigError
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 
 
 @click.command()
