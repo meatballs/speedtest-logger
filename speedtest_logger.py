@@ -36,6 +36,6 @@ def main(directory):
         s.upload(pre_allocate=False)
         message = s.results.csv()
     except (ConfigRetrievalError, SpeedtestConfigError):
-        message = f",,,{datetime.datetime.utcnow().isoformat()}Z,0,00,,"
+        message = f",,,{datetime.datetime.utcnow().isoformat()}Z,,,0,0,,"
 
     logger.info(message)
