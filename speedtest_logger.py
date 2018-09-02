@@ -5,9 +5,9 @@ import sys
 
 import click
 import daiquiri
-import speedtest
+from speedtest import ConfigRetrievalError, Speedtest, SpeedtestConfigError
 
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 
 @click.command()
@@ -29,13 +29,13 @@ def main(directory):
     servers = []
 
     try:
-        s = speedtest.Speedtest()
+        s = Speedtest()
         s.get_servers(servers)
         s.get_best_server()
         s.download()
         s.upload(pre_allocate=False)
         message = s.results.csv()
-    except speedtest.ConfigRetrievalError:
+    except (ConfigRetrievalError, SpeedtestConfigError):
         message = f",,,{datetime.datetime.utcnow().isoformat()}Z,0,00,,"
 
     logger.info(message)
