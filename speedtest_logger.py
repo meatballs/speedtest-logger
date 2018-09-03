@@ -7,12 +7,13 @@ import click
 import daiquiri
 from speedtest import ConfigRetrievalError, Speedtest, SpeedtestConfigError
 
-__version__ = "0.0.8"
+__version__ = "0.0.9"
 
 
 @click.command()
 @click.argument("directory", type=click.Path(), default=".")
-def main(directory):
+@click.option("--upload/--no-upload", default=True)
+def main(directory, upload):
     daiquiri.setup(
         level=logging.INFO,
         outputs=[
@@ -33,7 +34,8 @@ def main(directory):
         s.get_servers(servers)
         s.get_best_server()
         s.download()
-        s.upload(pre_allocate=False)
+        if upload:
+            s.upload(pre_allocate=False)
         message = s.results.csv()
     except (ConfigRetrievalError, SpeedtestConfigError):
         message = f",,,{datetime.datetime.utcnow().isoformat()}Z,,,0,0,,"
